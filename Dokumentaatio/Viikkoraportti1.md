@@ -9,7 +9,7 @@
 En vielä varsinaisesti aloittanut koodausta.
 
 ## Mitä opin tällä viikolla?
-Opin erilaisia tiedoston pakkaus algortimejä, on häviättömiä ja häviöllisiä menetelmiä. Opin, että milloin niitä käytetään eri käyttötarkoituksiin.
+Opin erilaisia tiedoston pakkaus algortimejä, on häviötöntä ja häviöllisiä menetelmiä. Opin, että milloin niitä käytetään eri käyttötarkoituksiin.
 
 ## Mikä jäi epäselväksi tai tuotti vaikeuksia?
 .
