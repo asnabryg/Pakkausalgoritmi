@@ -12,7 +12,7 @@ En vielä varsinaisesti aloittanut koodausta.
 Opin erilaisia tiedoston pakkaus algortimejä, on häviättömiä ja häviöllisiä menetelmiä. Opin, että milloin niitä käytetään eri käyttötarkoituksiin.
 
 ## Mikä jäi epäselväksi tai tuotti vaikeuksia?
--
+.
 
 ## Mitä teen seuraavaksi?
 Alitan ensiviikolla projektin koodauksen, tarkoituksena aloittaa Huffman algoritmistä.
