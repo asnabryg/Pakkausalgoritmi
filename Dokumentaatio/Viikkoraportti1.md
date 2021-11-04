@@ -1,6 +1,6 @@
 # Viikkoraportti 1
 
-## Mitä olen tehnt tällä viikolla?
+## Mitä olen tehnyt tällä viikolla?
 - Loin uuden repositorion Githubiin
 - Valitsin projektin aiheen
 - Tutustuin projektiin ja sen algoritmeihin
