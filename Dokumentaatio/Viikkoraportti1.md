@@ -15,7 +15,7 @@ Opin erilaisia tiedoston pakkaus algortimejä, on häviötöntä ja häviöllisi
 .
 
 ## Mitä teen seuraavaksi?
-Alitan ensiviikolla projektin koodauksen, tarkoituksena aloittaa Huffman algoritmistä.
+Aloitan ensiviikolla projektin koodauksen, tarkoituksena aloittaa Huffman algoritmistä.
 
 ### Käytetty aika:
 3 tuntia + luento
