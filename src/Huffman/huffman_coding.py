@@ -84,5 +84,27 @@ class Huffman_coding:
             i += 1
         return start_node
     
-    def get_next_bits(self, text):
-        pass
+    def get_char_bits(self, tree):
+        global char_bits
+        char_bits = {}
+
+        def recursion(node, bits=""):
+            global char_bits
+            if node is None:
+                return
+            if node.char is not None:
+                char_bits[node.char] = bits
+
+            recursion(node.left, bits + "0")
+            recursion(node.right, bits + "1")
+
+        recursion(tree)
+
+        return char_bits
+    
+    def text_to_bits(self, text, tree):
+        char_bits = self.get_char_bits(tree)
+        bits = ""
+        for char in text:
+            bits += char_bits[char]
+        return bits
