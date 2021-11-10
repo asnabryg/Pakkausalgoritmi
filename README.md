@@ -2,4 +2,4 @@
 Tiralabran harjoitustyö 2021
 
 ## Dokumentaatio
- - [määritelydokumentti](./määrittelydokumentti.md)
+ - [määritelydokumentti](./Dokumentaatio/määrittelydokumentti.md)
