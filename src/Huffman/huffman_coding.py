@@ -134,6 +134,7 @@ class Huffman_coding:
             i += 1
 
         # palauttaa puumallin aloitus solmun
+        print(start_node)
         return start_node
 
     def get_char_bits(self, tree):
@@ -159,7 +160,7 @@ class Huffman_coding:
             recursion(node.right, bits + "1")
 
         recursion(tree)
-
+        print("CHAR BITS", char_bits)
         return char_bits
 
     def text_to_bits(self, text, tree):
@@ -191,6 +192,7 @@ class Huffman_coding:
         # lisää bittien alkuu extra tavu, joka kertoo extra bittien määrän
         additional_bits = self.get_additional_bits(bits)
         bits = additional_bits[0] + additional_bits[1] * "0" + bits
+        print("BITS", bits)
         for i in range(0, len(bits), 8):
             byte = (bits[i:i+8])
             byteArray.append(int(byte, 2))
@@ -235,7 +237,7 @@ class Huffman_coding:
         return tree_bits, text_bits
     
     def bits_to_text(self, text_bits, tree):
-        """Kääntää bittiesityksen alkuperäiseksi tekstiksi.
+        """Kääntää tekstin bittiesityksen alkuperäiseksi tekstiksi.
 
         Args:
             text_bits (str): tekstin bittiesitys

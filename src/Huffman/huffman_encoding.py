@@ -42,6 +42,7 @@ class Huffman_encoding():
 
             # bitit muunnetaan tavuiksi ja tallennetaan uuteen tiedostoon
             bytes = h.bits_to_bytes(all_bits)
+            print(bytes)
             encoded_file.write(bytes)
 
 
