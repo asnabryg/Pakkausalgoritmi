@@ -2,7 +2,8 @@
 
 ## Mitä olen tehnyt tällä viikolla?
 Aloitin Huffman algoritmin koodauksen, sain tehtyä siinä lähes kaiken oleellisen.  
-Kirjoitin hieman testejä.  
+Kirjoitin hieman testejä.
+Lisäsin pylintin ja coverage-report koodit
 
 ## Miten ohjelma on edistynyt?
 Hyvin, sain koodattua tärkeimmän osan Huffman algoritmistä.
@@ -17,6 +18,7 @@ kun tarpeeksi kynällä ja paperilla kävi läpi.
 
 ## Mitä teen seuraavaksi?
 Seuraavaksi kirjoitan hieman lisää testejä ja refraktoin niitä. Ennen Lempel Ziviin tutustumista voisin myös tehdä Huffmanille komentorivikäyttöliittymän.
+Korjaan Pylint virheitä.
 
 ### Käytetty aika:
 10 tuntia
