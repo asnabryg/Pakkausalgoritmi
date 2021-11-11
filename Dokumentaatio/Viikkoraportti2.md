@@ -16,7 +16,7 @@ Minulla oli ongelmia koodata puumalli takaisin solmupuuksi bittiesityksestä, mu
 kun tarpeeksi kynällä ja paperilla kävi läpi.
 
 ## Mitä teen seuraavaksi?
-Seuraavaksi kirjoitan hieman lisää testejä ja refraktoin niitä. Ennen Lempel Ziviin tutustumista voisi myöstehdä Huffmanille komentorivi käyttöliittymän.
+Seuraavaksi kirjoitan hieman lisää testejä ja refraktoin niitä. Ennen Lempel Ziviin tutustumista voisin myös tehdä Huffmanille komentorivikäyttöliittymän.
 
 ### Käytetty aika:
 10 tuntia
