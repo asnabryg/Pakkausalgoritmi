@@ -12,7 +12,7 @@ Opin paljon syvemmin miten Huffman koodaus toimii, tajusin vihdoin myös miten
 pakatun tekstin purkaus toimii.
 
 ## Mikä jäi epäselväksi tai tuotti vaikeuksia?
-Minulla oli ongelmia koodata puumalli takaisin binaripuuksi bittiesityksestä, mutta sekin saattin valmiiksi,
+Minulla oli ongelmia koodata puumalli takaisin solmupuuksi bittiesityksestä, mutta sekin saatin valmiiksi,
 kun tarpeeksi kynällä ja paperilla kävi läpi.
 
 ## Mitä teen seuraavaksi?
