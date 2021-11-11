@@ -2,16 +2,23 @@ from Huffman.huffman_coding import Huffman_coding
 import os
 
 class Huffman_encoding():
+    """ Luokka, jossa pakataan tiedosto.
+    """
 
     def __init__(self):
         pass
 
     def encode(self, file_path):
+        """Metodi pakkaa annetun tiedoston.
+
+        Args:
+            file_path (str): polku pakattavaan tiedostoon.
+        """
         filename, filetype = os.path.splitext(file_path)
 
         h = Huffman_coding()
 
-        with open(file_path, "r") as file, open(filename + "_encoded.txt", "wb") as encoded_file:
+        with open(file_path, "r") as file, open(filename + "_encoded.bin", "wb") as encoded_file:
             text = file.read()
 
             # luodaan puu
@@ -35,7 +42,6 @@ class Huffman_encoding():
 
             # bitit muunnetaan tavuiksi ja tallennetaan uuteen tiedostoon
             bytes = h.bits_to_bytes(all_bits)
-            print(bin(bytes[-1])[2:].rjust(8, "0"))
             encoded_file.write(bytes)
 
 
