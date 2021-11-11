@@ -31,6 +31,7 @@ class Huffman_encoding():
             all_bits = tree_info_bits + bit_tree + encoded_bit_text
             print("TREE", bit_tree)
             print("TEXT", encoded_bit_text)
+            print("DECODED TEXT", h.bits_to_text(encoded_bit_text, h.bits_to_tree(bit_tree)))
 
             # bitit muunnetaan tavuiksi ja tallennetaan uuteen tiedostoon
             bytes = h.bits_to_bytes(all_bits)

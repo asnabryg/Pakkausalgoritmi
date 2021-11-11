@@ -1,6 +1,5 @@
 from Huffman.huffman_node import Huffman_node as Node
 from heapq import heapify, heappush, heappop
-import pathlib
 
 
 class Huffman_coding:
@@ -194,7 +193,6 @@ class Huffman_coding:
         bits = additional_bits[0] + additional_bits[1] * "0" + bits
         for i in range(0, len(bits), 8):
             byte = (bits[i:i+8])
-            # print(byte)
             byteArray.append(int(byte, 2))
         print(byteArray)
         return bytes(byteArray)
@@ -211,7 +209,6 @@ class Huffman_coding:
         """
         count = 8 - (len(bits) % 8)
         count_in_bits = "{0:08b}".format(count)
-        # print("count_in_bits", count_in_bits)
         return count_in_bits, count
 
     def separate_bits(self, bits):
@@ -223,10 +220,35 @@ class Huffman_coding:
         Returns:
             tuple(str, str): puu ja teksti bittiesitykset
         """
+        # poistetaan extra bitit
         extra_bits_count = int(bits[:8], 2)
         bits = bits[8 + extra_bits_count:]
+
+        # poistetaan puubittien määrä biteistä
         tree_bits_count = int(bits[:16], 2)
         bits = bits[16:]
+
+        # erotellaan puu- ja tekstibitit
         tree_bits = bits[:tree_bits_count]
         text_bits = bits[tree_bits_count:]
+
         return tree_bits, text_bits
+    
+    def bits_to_text(self, text_bits, tree):
+        """Kääntää bittiesityksen alkuperäiseksi tekstiksi.
+
+        Args:
+            text_bits (str): tekstin bittiesitys
+            tree (Huffman_node): puun aloitus solmu
+
+        Returns:
+            str: alkuperäinen teksti
+        """
+        text = ""
+        node = tree
+        for bit in text_bits:
+            node = node.left if bit == "0" else node.right
+            if node.left is None and node.right is None:
+                text += node.char
+                node = tree
+        return text
