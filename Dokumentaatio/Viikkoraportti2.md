@@ -1,7 +1,7 @@
 # Viikkoraportti 2
 
 ## Mitä olen tehnyt tällä viikolla?
-Aloitin Huffman algoritmin koodauksen, sain sen tehtyä siinä lähes kaiken oleellisen.  
+Aloitin Huffman algoritmin koodauksen, sain tehtyä siinä lähes kaiken oleellisen.  
 Kirjoitin hieman testejä.  
 
 ## Miten ohjelma on edistynyt?
