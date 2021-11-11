@@ -1,3 +1,4 @@
 src/Huffman/__pycache__
 test_file.txt
 test_file_encoded.bin
+test_file_encoded.txt

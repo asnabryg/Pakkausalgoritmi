@@ -2,6 +2,7 @@ from Huffman.huffman_node import Huffman_node as Node
 from heapq import heapify, heappush, heappop
 import pathlib
 
+
 class Huffman_coding:
     """Luokka, jossa on kaikki Huffman koodaukseen tarvittavat metodit.
     """
@@ -24,7 +25,7 @@ class Huffman_coding:
                 freqs[char] = 0
             freqs[char] += 1
         return freqs
-    
+
     def create_tree(self, text):
         """Luo Huffman puumallin
 
@@ -48,15 +49,15 @@ class Huffman_coding:
             left_node = heappop(heap)
             right_node = heappop(heap)
             heappush(heap, Node(
-                char = None,
-                freq = left_node.freq + right_node.freq,
-                left = left_node,
-                right = right_node
+                char=None,
+                freq=left_node.freq + right_node.freq,
+                left=left_node,
+                right=right_node
             ))
 
         # palauta puu
         return heappop(heap)
-    
+
     def tree_to_bits(self, tree):
         """ Koodaa puun bittiesityksen
 
@@ -80,9 +81,9 @@ class Huffman_coding:
                 recursion(node.left)
                 recursion(node.right)
             return bits
-        
+
         return recursion(tree)
-    
+
     def bits_to_tree(self, bits):
         """Luo puumallin bittiesityksestä
 
@@ -132,10 +133,10 @@ class Huffman_coding:
                     i -= 9
             # mennään bitti esityksessä yksi eteenpäin
             i += 1
-        
+
         # palauttaa puumallin aloitus solmun
         return start_node
-    
+
     def get_char_bits(self, tree):
         """Luo sanakirjan, jossa on merkkien uusi pakattu bittiesitys
 
@@ -161,21 +162,71 @@ class Huffman_coding:
         recursion(tree)
 
         return char_bits
-    
+
     def text_to_bits(self, text, tree):
+        """Luo uuden bittiesityksen pakattavasta tekstistä.
+
+        Args:
+            text (str): pakattavateksti
+            tree ([type]): [description]
+
+        Returns:
+            [type]: [description]
+        """
         char_bits = self.get_char_bits(tree)
         bits = ""
         for char in text:
             bits += char_bits[char]
         return bits
-    
-    def save_to_file(self, bytes):
-        with open("huffman.bin", "wb") as f:
-            f.write(bytes)
-    
+
     def bits_to_bytes(self, bits):
-        bytes = bytearray()
+        """Muuttaa bittiesityksen tavuiksi.
+
+        Args:
+            bits (str): bittiesitys
+
+        Returns:
+            bytearray: tavut
+        """
+        byteArray = bytearray()
+        # lisää bittien alkuu extra tavu, joka kertoo extra bittien määrän
+        additional_bits = self.get_additional_bits(bits)
+        bits = additional_bits[0] + additional_bits[1] * "0" + bits
         for i in range(0, len(bits), 8):
             byte = (bits[i:i+8])
-            bytes.append(int(byte, 2))
-        return bytes
+            # print(byte)
+            byteArray.append(int(byte, 2))
+        print(byteArray)
+        return bytes(byteArray)
+
+    def get_additional_bits(self, bits):
+        """Laskee extra bitit bittiesityksen alkuun,
+            jotta bittiesitys on oikean kokoinen.
+
+        Args:
+            bits (str): bittiesity
+
+        Returns:
+            tuple(str, int): extra bittienmäärä bitteinä ja extra bittien määrä kokonaislukuna
+        """
+        count = 8 - (len(bits) % 8)
+        count_in_bits = "{0:08b}".format(count)
+        # print("count_in_bits", count_in_bits)
+        return count_in_bits, count
+
+    def separate_bits(self, bits):
+        """Erottaa puun ja tekstin bittiesityksen biteistä ja palauttaa ne
+
+        Args:
+            bits (str): bittiesitys
+
+        Returns:
+            tuple(str, str): puu ja teksti bittiesitykset
+        """
+        extra_bits_count = int(bits[:8], 2)
+        bits = bits[8 + extra_bits_count:]
+        tree_bits_count = int(bits[:16], 2)
+        bits = bits[16:]
+        tree_bits = bits[:tree_bits_count]
+        text_bits = bits[tree_bits_count:]
+        return tree_bits, text_bits
