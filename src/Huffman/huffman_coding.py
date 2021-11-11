@@ -1,12 +1,23 @@
 from Huffman.huffman_node import Huffman_node as Node
 from heapq import heapify, heappush, heappop
+import pathlib
 
 class Huffman_coding:
+    """Luokka, jossa on kaikki Huffman koodaukseen tarvittavat metodit.
+    """
 
     def __init__(self):
         pass
 
     def get_frequencies(self, text):
+        """Luo sanakirjan, jossa on tekstin merkkien lukumäärät.
+
+        Args:
+            text (str): pakattava teksti
+
+        Returns:
+            sanakirja: valmis sanakirja
+        """
         freqs = {}
         for char in text:
             if char not in freqs:
@@ -14,7 +25,15 @@ class Huffman_coding:
             freqs[char] += 1
         return freqs
     
-    def get_tree(self, text):
+    def create_tree(self, text):
+        """Luo Huffman puumallin
+
+        Args:
+            text (str): pakattava teksti
+
+        Returns:
+            [Huffman_node]: puun aloitus solmu
+        """
         # hae kirjainten lukumäärät
         freqs = self.get_frequencies(text)
 
@@ -39,14 +58,24 @@ class Huffman_coding:
         return heappop(heap)
     
     def tree_to_bits(self, tree):
+        """ Koodaa puun bittiesityksen
+
+        Args:
+            tree (Huffman_node): puun aloitus solmu
+
+        Returns:
+            str: puu koodattuna bitteihin merkkijonona
+        """
         global bits
         bits = ""
 
         def recursion(node):
             global bits
             if node.left is None and node.right is None:
+                # bitti 1:n oikealla puolella seuraavat 8 bittiä kertoo mikä merkki kyseessä
                 bits += "1" + "{0:08b}".format(ord(node.char))
             else:
+                # bitti 0:n oikealla puolella on solmun lapset
                 bits += "0"
                 recursion(node.left)
                 recursion(node.right)
@@ -55,36 +84,67 @@ class Huffman_coding:
         return recursion(tree)
     
     def bits_to_tree(self, bits):
+        """Luo puumallin bittiesityksestä
+
+        Args:
+            bits (str): bitit merkkijonona
+
+        Returns:
+            Huffman_node: puun aloitus solmu
+        """
         i = 1
         start_node = Node()
-        old_node = start_node
+        current_node = start_node
         while i < len(bits):
             if bits[i] == "0":
-                new_node = Node(prev=old_node)
-                if old_node.left is None:
-                    old_node.set_left(new_node)
-                    old_node = new_node
-                elif old_node.right is None:
-                    old_node.set_right(new_node)
-                    old_node = new_node
+                # luo nykyiselle solmulle uuden merkittömän lapsen
+                # ja nykyinen solmu muuttuu seuraavaksi solmuksi
+                new_node = Node(prev=current_node)
+                if current_node.left is None:
+                    current_node.set_left(new_node)
+                    current_node = new_node
+                elif current_node.right is None:
+                    current_node.set_right(new_node)
+                    current_node = new_node
                 else:
-                    old_node = old_node.prev
+                    # jos haara jo käyty läpi, mennään bittiesityksessä taaksepäin,
+                    # että löytyy solmu, jonka läpikäynti jäi kesken,
+                    # ja nykyinen solmu muuttuu solmun vanhemmaksi
+                    current_node = current_node.prev
                     i -= 1
             elif bits[i] == "1":
+                # haetaan merkki bittiesityksestä
                 char = chr(int(bits[i+1: i+9], 2))
+                # siirytään bittiesityksessä merkin yli
                 i += 8
-                new_node = Node(char=char, prev=old_node)
-                if old_node.left is None:
-                    old_node.set_left(new_node)
-                elif old_node.right is None:
-                    old_node.set_right(new_node)
+                # merkillinen solmu lisätään nykyisen solmun lapseksi
+                # ensin aina vasemmaksi solmuksi
+                new_node = Node(char=char, prev=current_node)
+                if current_node.left is None:
+                    current_node.set_left(new_node)
+                elif current_node.right is None:
+                    current_node.set_right(new_node)
                 else:
-                    old_node = old_node.prev
+                    # jos haara jo käyty läpi, mennään bittiesityksessä taaksepäin,
+                    # että löytyy solmu, jonka läpikäynti jäi kesken,
+                    # ja nykyinen solmu muuttuu solmun vanhemmaksi
+                    current_node = current_node.prev
                     i -= 9
+            # mennään bitti esityksessä yksi eteenpäin
             i += 1
+        
+        # palauttaa puumallin aloitus solmun
         return start_node
     
     def get_char_bits(self, tree):
+        """Luo sanakirjan, jossa on merkkien uusi pakattu bittiesitys
+
+        Args:
+            tree (Huffman_node): puun aloitus solmu
+
+        Returns:
+            sanakirja: merkkien pakatut bittiesitykset
+        """
         global char_bits
         char_bits = {}
 
@@ -108,3 +168,14 @@ class Huffman_coding:
         for char in text:
             bits += char_bits[char]
         return bits
+    
+    def save_to_file(self, bytes):
+        with open("huffman.bin", "wb") as f:
+            f.write(bytes)
+    
+    def bits_to_bytes(self, bits):
+        bytes = bytearray()
+        for i in range(0, len(bits), 8):
+            byte = (bits[i:i+8])
+            bytes.append(int(byte, 2))
+        return bytes
