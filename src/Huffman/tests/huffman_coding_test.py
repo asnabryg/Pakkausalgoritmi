@@ -81,5 +81,8 @@ class TestHuffmanCoding(unittest.TestCase):
         hm_decoding = HuffmanDecoding()
         encoded_file_path = self.hm_encoding.encode(self.test_file_path)
         decoded_file_path = hm_decoding.decode(encoded_file_path)
-        includes = True if "src/Huffman/tests/test_file.txt" in decoded_file_path else False
+        includes = True if "src/Huffman/tests/test_file_decoded.txt" in decoded_file_path else False
         self.assertEqual(True, includes)
+        with open(decoded_file_path, "r", encoding="utf-8") as file:
+            text = file.read()
+            self.assertEqual(self.text, text)

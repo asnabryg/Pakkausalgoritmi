@@ -16,7 +16,7 @@ class HuffmanDecoding:
             file_path (str): polku purettavaan tiedostoon.
         """
         file_name = os.path.splitext(file_path)[0]
-        file_name = file_name.replace("_hm", "")
+        file_name = file_name.replace("_hm", "_decoded")
         file_name += ".txt"
 
         h = HuffmanCoding()
