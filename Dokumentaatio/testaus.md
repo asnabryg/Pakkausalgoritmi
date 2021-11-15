@@ -16,3 +16,4 @@ keskeneräinen
 
 ## Testauskattavuus
 Ohjelman tämän hetkinen (15.11.2021) testauskattavuus on 100%.
+![testikattavuus](./kuvia/testikattavuus_15.11.2021.png)
