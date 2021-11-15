@@ -1,7 +1,8 @@
 src/Huffman/__pycache__
 src/Huffman/tests/__pycache__/
-test_file.txt
-test_file_encoded.bin
-test_file_encoded.txt
+text_file.txt
+test_file_hm.bin
+text_file_hm.bin
+text_file_hm.txt
 htmlcov/
 .coverage

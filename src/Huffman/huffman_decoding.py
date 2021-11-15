@@ -15,13 +15,13 @@ class Huffman_decoding:
         Args:
             file_path (str): polku purettavaan tiedostoon.
         """
-        filename, filetype = os.path.splitext(file_path)
-        filename = filename.replace("_encoded", "")
-        filename += ".txt"
+        file_name, file_type = os.path.splitext(file_path)
+        file_name = file_name.replace("_hm", "")
+        file_name += ".txt"
 
         h = Huffman_coding()
 
-        with open(file_path, "rb") as file, open(filename, "w") as decoded_file:
+        with open(file_path, "rb") as file, open(file_name, "w") as decoded_file:
             bytes = file.read()
 
             # muunnetaan tavut bittiesitykseksi
@@ -40,4 +40,4 @@ class Huffman_decoding:
             print("DECODED TEXT", decoded_text)
 
             decoded_file.write(decoded_text)
-            return decoded_file
+            return file_name

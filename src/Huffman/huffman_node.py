@@ -19,13 +19,13 @@ class Huffman_node:
         self.prev = prev
         self.code = ""
     
-    def set_char(self, char):
-        """Asettaa merkin solmulle
+    # def set_char(self, char):
+    #     """Asettaa merkin solmulle
 
-        Args:
-            char (str): merkki
-        """
-        self.char = char
+    #     Args:
+    #         char (str): merkki
+    #     """
+    #     self.char = char
     
     def set_left(self, left_node):
         """Asettaa vasemman lapsisolmun
@@ -43,13 +43,13 @@ class Huffman_node:
         """
         self.right = right_node
     
-    def set_prev(self, previous_node):
-        """Asettaa solmulle vanhemman
+    # def set_prev(self, previous_node):
+    #     """Asettaa solmulle vanhemman
 
-        Args:
-            previous_node (Huffman_node): asetettava solmu
-        """
-        self.prev = previous_node
+    #     Args:
+    #         previous_node (Huffman_node): asetettava solmu
+    #     """
+    #     self.prev = previous_node
     
     def __lt__(self, other):
         """Vertailu metodi, jota käytetään minimikeossa.
