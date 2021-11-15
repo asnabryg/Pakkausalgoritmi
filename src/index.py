@@ -1,15 +1,15 @@
+import os
 from Huffman.huffman_encoding import HuffmanEncoding
 from Huffman.huffman_decoding import HuffmanDecoding
 
 
 def main():
-
     print()
-    print("TIEDOSTON PAKKAUS/PURKU")
+    print("TEKSTITIEDOSTON PAKKAUS/PURKU")
     while True:
         print()
         print("Komennot:")
-        print("  1. Pakkaa tiedosto")
+        print("  1. Pakkaa tekstitiedosto")
         print("  2. Pura tiedosto")
         print("  3. Sulje ohjelma")
         cmd = input("> ")
@@ -44,13 +44,18 @@ def encoding():
         print("  2. Lempel Ziv")
         cmd = input("> ")
         if cmd == "1":
+            # Huffmann
             print()
             try:
                 file_path = input("Syötä tiedoston polku: ")
                 h_encoding = HuffmanEncoding()
+                og_size = os.path.getsize(file_path)
                 encoded_file_path = h_encoding.encode(file_path)
+                encoded_size = os.path.getsize(encoded_file_path)
+                precent = round((1 - encoded_size / og_size) * 100, 2)
                 print("...")
                 print("Tiedosto pakattu polkuun: " + encoded_file_path)
+                print("Pakattutiedosto n. " + str(precent) + " % pienempi")
                 break
             except:
                 print("Virheellinen polku tai tiedosto.")
@@ -71,6 +76,7 @@ def decoding():
         print("  2. Lempel Ziv")
         cmd = input("> ")
         if cmd == "1":
+            # Huffman
             print()
             try:
                 file_path = input("Syötä tiedoston polku: ")
