@@ -4,7 +4,7 @@
 Aloitin Huffman algoritmin koodauksen, sain tehtyä siinä lähes kaiken oleellisen.  
 Kirjoitin hieman testejä.
 Lisäsin pylintin ja coverage-report koodit.
-Nykyisen testikattavuuden löytää kuvana: [testikattavuus](./testikattavuus_11.11.2021.png)
+Nykyisen testikattavuuden löytää kuvana: [testikattavuus](./kuvia/testikattavuus_11.11.2021.png)
 
 ## Miten ohjelma on edistynyt?
 Hyvin, sain koodattua tärkeimmän osan Huffman algoritmistä.
