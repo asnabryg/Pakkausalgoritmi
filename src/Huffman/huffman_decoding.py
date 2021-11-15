@@ -1,8 +1,8 @@
-from Huffman.huffman_coding import Huffman_coding
 import os
+from Huffman.huffman_coding import HuffmanCoding
 
 
-class Huffman_decoding:
+class HuffmanDecoding:
     """Luokka, jossa puretaan pakattu tiedosto.
     """
 
@@ -15,18 +15,19 @@ class Huffman_decoding:
         Args:
             file_path (str): polku purettavaan tiedostoon.
         """
-        file_name, file_type = os.path.splitext(file_path)
+        file_name = os.path.splitext(file_path)[0]
         file_name = file_name.replace("_hm", "")
         file_name += ".txt"
 
-        h = Huffman_coding()
+        h = HuffmanCoding()
 
-        with open(file_path, "rb") as file, open(file_name, "w") as decoded_file:
-            bytes = file.read()
+        with open(file_path, "rb") as file, \
+             open(file_name, "w", encoding="utf-8") as decoded_file:
+            in_bytes = file.read()
 
             # muunnetaan tavut bittiesitykseksi
             bits = ""
-            for byte in bytes:
+            for byte in in_bytes:
                 bits += bin(byte)[2:].rjust(8, "0")
 
             # erotetaan bittiesityksestä puun ja tekstin bitit

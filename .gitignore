@@ -6,3 +6,4 @@ text_file_hm.bin
 text_file_hm.txt
 htmlcov/
 .coverage
+src/__pycache__

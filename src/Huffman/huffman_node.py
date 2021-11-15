@@ -1,8 +1,8 @@
 
-class Huffman_node:
+class HuffmanNode:
     """Luokka, jota käytetään solmuina Huffmanin puumallissa
     """
-    
+
     def __init__(self, char=None, freq=None, left=None, right=None, prev=None):
         """Luokan kostruktori, joka luo uuden solmun.
 
@@ -18,7 +18,7 @@ class Huffman_node:
         self.left, self.right = left, right
         self.prev = prev
         self.code = ""
-    
+
     # def set_char(self, char):
     #     """Asettaa merkin solmulle
 
@@ -26,7 +26,7 @@ class Huffman_node:
     #         char (str): merkki
     #     """
     #     self.char = char
-    
+
     def set_left(self, left_node):
         """Asettaa vasemman lapsisolmun
 
@@ -34,7 +34,7 @@ class Huffman_node:
             left_node (Huffman_node): asetettava solmu
         """
         self.left = left_node
-    
+
     def set_right(self, right_node):
         """Asettaa oikean lapsisolmun
 
@@ -42,7 +42,7 @@ class Huffman_node:
             right_node (Huffman_node): asetettava solmu
         """
         self.right = right_node
-    
+
     # def set_prev(self, previous_node):
     #     """Asettaa solmulle vanhemman
 
@@ -50,7 +50,7 @@ class Huffman_node:
     #         previous_node (Huffman_node): asetettava solmu
     #     """
     #     self.prev = previous_node
-    
+
     def __lt__(self, other):
         """Vertailu metodi, jota käytetään minimikeossa.
 
@@ -61,11 +61,12 @@ class Huffman_node:
             Huffman_node: solmu, jolla on pienempi merkin esiintymistiheys
         """
         return self.freq < other.freq
-    
+
     def __str__(self):
         """Muodostaa solmuista / puusta merkkijono muotoisen esityksen
 
         Returns:
             str: solmupuu
         """
-        return "Node(C: " + str(self.char) + ", L:"+ str(self.left) + ", R:" +  str(self.right) + ")"
+        return "Node(C: " + str(self.char) + ", L:" + \
+            str(self.left) + ", R:" + str(self.right) + ")"

@@ -1,8 +1,8 @@
-from Huffman.huffman_node import Huffman_node as Node
 from heapq import heapify, heappush, heappop
+from Huffman.huffman_node import HuffmanNode as Node
 
 
-class Huffman_coding:
+class HuffmanCoding:
     """Luokka, jossa on kaikki Huffman koodaukseen tarvittavat metodit.
     """
 
@@ -231,7 +231,7 @@ class Huffman_coding:
         text_bits = bits[tree_bits_count:]
 
         return tree_bits, text_bits
-    
+
     def bits_to_text(self, text_bits, tree):
         """Kääntää tekstin bittiesityksen alkuperäiseksi tekstiksi.
 

@@ -1,7 +1,8 @@
-from Huffman.huffman_coding import Huffman_coding
 import os
+from Huffman.huffman_coding import HuffmanCoding
 
-class Huffman_encoding():
+
+class HuffmanEncoding():
     """ Luokka, jossa pakataan tiedosto.
     """
 
@@ -14,12 +15,13 @@ class Huffman_encoding():
         Args:
             file_path (str): polku pakattavaan tiedostoon.
         """
-        file_name, file_type = os.path.splitext(file_path)
+        file_name = os.path.splitext(file_path)[0]
         file_name += "_hm.bin"
 
-        h = Huffman_coding()
+        h = HuffmanCoding()
 
-        with open(file_path, "r") as file, open(file_name, "wb") as encoded_file:
+        with open(file_path, "r", encoding="utf-8") as file, \
+            open(file_name, "wb") as encoded_file:
             text = file.read()
 
             # luodaan puu
@@ -38,9 +40,7 @@ class Huffman_encoding():
             all_bits = tree_info_bits + bit_tree + encoded_bit_text
 
             # bitit muunnetaan tavuiksi ja tallennetaan uuteen tiedostoon
-            bytes = h.bits_to_bytes(all_bits)
-            encoded_file.write(bytes)
-        
+            in_bytes = h.bits_to_bytes(all_bits)
+            encoded_file.write(in_bytes)
+
             return file_name
-
-
