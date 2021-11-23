@@ -99,8 +99,10 @@ def decoding():
 
 def test_lzw():
     lzw = LzwCoding()
-    output = lzw.create_output("ttth isistheeesti  tthe")
+    output = lzw.create_output("ttthisistheeestitthe")
+    print(output)
     bits = lzw.output_to_bits(output)
+    print(bits)
     in_bytes = lzw.bits_to_bytes(bits)
     print(in_bytes)
 
@@ -112,5 +114,5 @@ def test_lzw():
 
 
 if __name__ == '__main__':
-    main()
-    # test_lzw()
+    # main()
+    test_lzw()
