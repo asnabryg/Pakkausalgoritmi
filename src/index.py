@@ -58,7 +58,7 @@ def encoding():
                 print("Tiedosto pakattu polkuun: " + encoded_file_path)
                 print("Pakattutiedosto n. " + str(precent) + " % pienempi")
                 break
-            except:
+            except FileNotFoundError:
                 print("Virheellinen polku tai tiedosto.")
                 print()
         elif cmd == "2":
@@ -86,7 +86,7 @@ def decoding():
                 print("...")
                 print("Tiedosto purettu polkuun: " + decoded_file_path)
                 break
-            except:
+            except FileNotFoundError:
                 print("Virheellinen polku tai tiedosto.")
                 print()
         elif cmd == "2":
@@ -96,7 +96,8 @@ def decoding():
             print("Virheellinen syöte")
             print()
 
-def testLZW():
+
+def test_lzw():
     lzw = LzwCoding()
     output = lzw.create_output("ttth isistheeesti  tthe")
     bits = lzw.output_to_bits(output)
@@ -109,6 +110,7 @@ def testLZW():
     print(lzw.bits_to_output(bits))
     print(lzw.output_to_text(output))
 
+
 if __name__ == '__main__':
     main()
-    # testLZW()
+    # test_lzw()

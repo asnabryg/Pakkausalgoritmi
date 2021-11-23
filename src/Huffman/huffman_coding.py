@@ -186,13 +186,13 @@ class HuffmanCoding:
         Returns:
             bytearray: tavut
         """
-        byteArray = bytearray()
+        byte_array = bytearray()
         # lisää bittien alkuu extra tavu, joka kertoo extra bittien määrän
         bits = self.get_additional_bits(bits) + bits
         for i in range(0, len(bits), 8):
             byte = (bits[i:i+8])
-            byteArray.append(int(byte, 2))
-        return bytes(byteArray)
+            byte_array.append(int(byte, 2))
+        return bytes(byte_array)
 
     def get_additional_bits(self, bits):
         """Laskee extra bitit bittiesityksen alkuun,

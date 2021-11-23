@@ -431,7 +431,10 @@ good-names=i,
            h,
            bits,
            char_bits,
-           Huffman
+           Huffman,
+           c,
+           n,
+           b,
 
 # Good variable names regexes, separated by a comma. If names match any regex,
 # they will always be accepted

@@ -49,7 +49,7 @@ class LzwCoding:
         output.append(code_table[current])
 
         return output
-    
+
     def output_to_bits(self, output: list):
         """Luo listan kokonaisluvuista bittiesityksen, jonka alussa on
         tieto tarvittavien bittien määrästä lukujen esittämiseksi.
@@ -74,10 +74,10 @@ class LzwCoding:
         for code in output:
             b = "{0:0" + str(max_bit_length) + "b}"
             bits += b.format(code)
-        
+
         # lisätään bittiesityksen alkuun tarvittavienbittien määrä
         return bit_info + bits
-    
+
     def bits_to_bytes(self, bits):
         """Muuttaa bittiesityksen tavuiksi.
 
@@ -87,15 +87,15 @@ class LzwCoding:
         Returns:
             bytearray: tavut
         """
-        byteArray = bytearray()
+        byte_array = bytearray()
         # lisää bittien alkuu extra tavu, joka kertoo extra bittien määrän
         bits = self.get_additional_bits(bits) + bits
 
         for i in range(0, len(bits), 8):
             byte = (bits[i:i+8])
-            byteArray.append(int(byte, 2))
-        return bytes(byteArray)
-    
+            byte_array.append(int(byte, 2))
+        return bytes(byte_array)
+
     def get_additional_bits(self, bits):
         """Laskee extra bitit bittiesityksen alkuun,
             jotta bittiesitys on oikean kokoinen.
@@ -109,7 +109,7 @@ class LzwCoding:
         count = 8 - (len(bits) % 8)
         count_in_bits = "{0:08b}".format(count)
         return count_in_bits + count * "0"
-    
+
     def bits_to_output(self, bits):
         """Poistaa bittiesityksestä extrabitit ja bittien pituus infon.
         Luo niiden perusteella kokonaislukuesitykset listana.
@@ -130,7 +130,7 @@ class LzwCoding:
 
         # luo ja palauta tuloste
         return [int(bits[i:i+bit_length], 2) for i in range(0, len(bits), bit_length)]
-    
+
     def output_to_text(self, output):
         """Purkaa pakatun tuloste listan alkuperäiseksi tekstiksi.
 
