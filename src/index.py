@@ -1,6 +1,7 @@
 import os
 from Huffman.huffman_encoding import HuffmanEncoding
 from Huffman.huffman_decoding import HuffmanDecoding
+from LZW.lzw_coding import LzwCoding
 
 
 def main():
@@ -95,6 +96,19 @@ def decoding():
             print("Virheellinen syöte")
             print()
 
+def testLZW():
+    lzw = LzwCoding()
+    output = lzw.create_output("ttth isistheeesti  tthe")
+    bits = lzw.output_to_bits(output)
+    in_bytes = lzw.bits_to_bytes(bits)
+    print(in_bytes)
+
+    bits = ""
+    for byte in in_bytes:
+        bits += bin(byte)[2:].rjust(8, "0")
+    print(lzw.bits_to_output(bits))
+    print(lzw.output_to_text(output))
 
 if __name__ == '__main__':
     main()
+    # testLZW()

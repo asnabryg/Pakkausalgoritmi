@@ -188,8 +188,7 @@ class HuffmanCoding:
         """
         byteArray = bytearray()
         # lisää bittien alkuu extra tavu, joka kertoo extra bittien määrän
-        additional_bits = self.get_additional_bits(bits)
-        bits = additional_bits[0] + additional_bits[1] * "0" + bits
+        bits = self.get_additional_bits(bits) + bits
         for i in range(0, len(bits), 8):
             byte = (bits[i:i+8])
             byteArray.append(int(byte, 2))
@@ -203,11 +202,11 @@ class HuffmanCoding:
             bits (str): bittiesity
 
         Returns:
-            tuple(str, int): extra bittienmäärä bitteinä ja extra bittien määrä kokonaislukuna
+            str: extra bittienmäärä bitteinä + extra bitit
         """
         count = 8 - (len(bits) % 8)
         count_in_bits = "{0:08b}".format(count)
-        return count_in_bits, count
+        return count_in_bits + count * "0"
 
     def separate_bits(self, bits):
         """Erottaa puun ja tekstin bittiesityksen biteistä ja palauttaa ne

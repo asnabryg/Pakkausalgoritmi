@@ -55,9 +55,8 @@ class TestHuffmanCoding(unittest.TestCase):
             bytes, b'\x01\x00"\x96\x9b\x82\xca]\x12\x0b\x9d\x87\xff\xff\xff\xfa\xaa\xaa\xaa\x80\x00\x007\xbd\xe6f*\xaa\xaa\xba')
 
     def test_get_additional_bits(self):
-        count_in_bits, count = self.h.get_additional_bits("110")
-        self.assertEqual(count_in_bits, "00000101")
-        self.assertEqual(count, 5)
+        additional_bits = self.h.get_additional_bits("110")
+        self.assertEqual(additional_bits, "0000010100000")
 
     def test_separate_bits(self):
         bits = "0000010100000000000000000010111111000111"
