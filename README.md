@@ -10,6 +10,7 @@ Tiralabran harjoitustyö 2021
 - [Viikko 1](./Dokumentaatio/Viikkoraportti1.md)
 - [Viikko 2](./Dokumentaatio/Viikkoraportti2.md)
 - [Viikko 3](./Dokumentaatio/Viikkoraportti3.md)
+- [Viikko 4](./Dokumentaatio/Viikkoraportti4.md)
 
 ## Komentorivikomennot
 ### Ohjelman suorittaminen:
