@@ -15,7 +15,8 @@ Ymmärsin LZW algoritmin purku tavan.
 
 ## Mitä teen seuraavaksi?
 Implementoin LZW käyttöliittymään ja teen sille suorituskyky testit.  
-Refraktoin koodia. Nyt Huffman ja LZW algoritmissä on hieman toistuvaa koodia.
+Refraktoin koodia. Nyt Huffman ja LZW algoritmissä on hieman toistuvaa koodia.  
+Kirjoitan paremman käyttöohjeen.
 
 ### Käytetty aika
 10 tuntia
