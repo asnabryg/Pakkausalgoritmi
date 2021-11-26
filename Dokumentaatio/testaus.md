@@ -16,8 +16,8 @@ Luokkaa `LzwCoding` testataan [TestLempelZivWelchCoding](https://github.com/asna
 Luokka alustaa pakattavan tekstin, jota käytetään eri lzw metodien testauksessa. Testit ovat yksin kertaisia, ja testaa kaikki metodit läpi.
 
 ## Testauskattavuus
-Ohjelman tämän hetkinen (15.11.2021) testauskattavuus on 100%.
-![testikattavuus](./kuvia/testikattavuus_15.11.2021.png)
+Ohjelman tämän hetkinen (26.11.2021) testauskattavuus on 100%.
+![testikattavuus](./kuvia/testikattavuus_26.11.2021.png)
 
 # Suorituskyky
 Testauksessa käytetiin satunnaisgeneroitua Lorem ipsumia. Tiedostojen koot väliltä 512-1 048 576 tavua. Pakkausteho lasketaan kuinka monta prosenttia pienempi pakattu tiedosto on.
