@@ -12,7 +12,8 @@ luo uuden pakatuntiedoston alkuperäisen tiedoston viereen.
 Tämän jälkeen testataan `HuffmanDecoding`-luokkaa, että se purkaa pakatun tiedoston oikein ja teksti on sama kuin alkuperäinen.
 
 ## Lempel-Ziv-Welch
-keskeneräinen
+Luokkaa `LzwCoding` testataan [TestLempelZivWelchCoding](https://github.com/asnabryg/Pakkausalgoritmi/blob/main/src/LZW/tests/lzw_test.py)-testiluokalla.
+Luokka alustaa pakattavan tekstin, jota käytetään eri lzw metodien testauksessa. Testit ovat yksin kertaisia, ja testaa kaikki metodit läpi.
 
 ## Testauskattavuus
 Ohjelman tämän hetkinen (15.11.2021) testauskattavuus on 100%.
