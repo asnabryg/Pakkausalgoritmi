@@ -20,6 +20,10 @@ Näin algoritmi pystyy purkamaan jatkossa pakatun binaaritiedoston.
 Purkaessa aluksi poistamme extrabititien infon, extrabitit, puu bittien infon ja puu bittiesityksen bittiesityksestä.
 Luomme puu bittiesityksestä puumallin ja sen perusteella saamme alkuperäisen tekstin näkyville.
 
+### Aikavaativuus
+Puumallin luominen on O(n log n). Puun koko riippuu syötteen koosta, ja puun luominen toimii logaritmisessa ajassa, kun keon jäjestämistä käytetään.
+Purku pitäisi toimia O(n).
+
 ## Lempel-Ziv-Welch
 ### Pakkaus
 Ensimmäiseksi tallennetaan sanakirjaan yksittäiset merkit ja niiden Unicode arvo.
@@ -37,3 +41,6 @@ Aluksi poistetaan extra bittien info ja extra bitit. Luodaan lopuista biteistä 
   
 Seuraavaksi luodaan sanakirja listasta, joiden kokonaislukuesitys on alle 256. Avaimena kokonaisluku ja arvona merkki.
 Nyt pystymme purkamaan tekstin listan perusteella ja saamme alkuperisen tekstin näkyville.
+
+### Aikavaativuus
+LZW toimii O(n). Algoritmissä ei tarvita järjestämistä kuten Huffman koodauksessa. Sama purkauksessa, joka on O(n).
