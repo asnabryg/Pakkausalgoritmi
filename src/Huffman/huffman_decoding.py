@@ -22,7 +22,7 @@ class HuffmanDecoding:
         h = HuffmanCoding()
 
         with open(file_path, "rb") as file, \
-             open(file_name, "w", encoding="utf-8") as decoded_file:
+                open(file_name, "w", encoding="utf-8") as decoded_file:
             in_bytes = file.read()
 
             # muunnetaan tavut bittiesitykseksi
@@ -38,7 +38,6 @@ class HuffmanDecoding:
 
             # purataan teksti alkuperäiseen mutoon puumallin avulla
             decoded_text = h.bits_to_text(text_bits, tree)
-            print("DECODED TEXT", decoded_text)
 
             decoded_file.write(decoded_text)
             return file_name

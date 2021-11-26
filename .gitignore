@@ -8,3 +8,5 @@ text_file_hm.txt
 htmlcov/
 .coverage
 __pycache__
+text_files/
+performance_test.py

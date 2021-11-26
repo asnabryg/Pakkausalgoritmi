@@ -114,5 +114,5 @@ def test_lzw():
 
 
 if __name__ == '__main__':
-    # main()
-    test_lzw()
+    main()
+    # test_lzw()
