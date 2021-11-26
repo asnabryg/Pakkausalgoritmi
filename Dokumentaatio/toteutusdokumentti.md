@@ -6,10 +6,10 @@ Ensimmäisenä algoritmi tallentaa sanakirjaan tekstistä kaikki tarvittavat mer
 Sanakirjan avulla voidaan luoda Huffman puumalli, jossa aluksi lisätään minimikekoon jokainen esiintynyt merkki [Huffman solmuna](https://github.com/asnabryg/Pakkausalgoritmi/blob/main/src/Huffman/huffman_node.py),
 johon tallennetaan merkki, merkin lukumäärä, vasen- ja oikea lapsi.
 Nyt algoritmi kokoaa puun alkaen kahdesta pienimmästä solmusta ja luo niiden avulla uuden solmun, jolla ei ole merkkiä, mutta näiden kahden solmun esiintymis lukumäärän summa. Uusi solmu saa lapsikseen aikaisemmat kaksi solmua ja lisätään solmu minimikekoon.
-Toistetaan algoritmiä toistetaan kunnes minimikeossa on enää yksi solmu jäljellä, joka on puun juuri solmu.
+Toistetaan algoritmiä kunnes minimikeossa on enää yksi solmu jäljellä, joka on puun juuri solmu.
 Puu esittää uutta bittiesitystä kaikille tarvittaville merkeille. Merkki, jolla on suurin esiintymismäärä tekstissä, saa lyhkäsimmän bittiesityksen jne.
   
-Seuraavaksi luoddaan bittiesitys puumallista. Lisätään bitti 0, jos solmulla on lapsi(a), ja bitti 1, jos solmu on lehti ja tallenetaan lehtisolmun merkki bitteinä seuraavaksi.
+Seuraavaksi luodaan bittiesitys puumallista. Lisätään bitti 0, jos solmulla on lapsi(a), ja bitti 1, jos solmu on lehti ja tallenetaan lehtisolmun merkki bitteinä seuraavaksi.
 Tätä toistetaan rekursiivisesti, kunnes jokainen solmu on käyty läpi.
 
 Nyt voimme luoda lopullisen bittiesityksen, ensimmäiseksi tallennetaan puun bittiesityksen koko, sen jälkeen puun bittiesitys ja tiedoston teksti uusilla merkkien bittiesityksillä.
@@ -17,7 +17,7 @@ Tämän jälkeen tarkistetaan kuinka monta extra bittiä, pitää lisätä, ett�
 Näin algoritmi pystyy purkamaan jatkossa pakatun binaaritiedoston.
 
 #### Purku
-Purkaessa aluksi poistamme extrabititien infon, extrabitit, puu bittien infon ja puu bittiesityksen bittiesityksestä.
+Purkaessa aluksi poistamme extra bittien infon, extrabitit, puu bittien infon ja puu bittiesityksen bittiesityksestä.
 Luomme puu bittiesityksestä puumallin ja sen perusteella saamme alkuperäisen tekstin näkyville.
 
 #### Aikavaativuus
