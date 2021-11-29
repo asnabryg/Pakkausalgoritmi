@@ -33,7 +33,7 @@ def main():
 def encoding():
     print()
     while True:
-        print("Valitse pakkaus menetelmä:")
+        print("Valitse pakkausmenetelmä:")
         print("  1. Huffman")
         print("  2. Lempel Ziv Welch")
         cmd = input("> ")
@@ -78,7 +78,7 @@ def encoding():
 def decoding():
     print()
     while True:
-        print("Valitse purku menetelmä:")
+        print("Valitse purkumenetelmä:")
         print("  1. Huffman")
         print("  2. Lempel Ziv Welch")
         cmd = input("> ")
