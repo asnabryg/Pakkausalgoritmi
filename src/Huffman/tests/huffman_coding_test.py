@@ -45,19 +45,6 @@ class TestHuffmanCoding(unittest.TestCase):
         self.assertEqual(
             text_bits, "11111111111111111111111111111110101010101010101010101010101000000000000000000000000011011110111101111001100110011000101010101010101010101010111010")
 
-    def test_bits_to_bytes(self):
-        bit_tree = self.h.tree_to_bits(self.tree)
-        tree_info_bits = "{0:016b}".format(len(bit_tree))
-        encoded_bit_text = self.h.text_to_bits(self.text, self.tree)
-        all_bits = tree_info_bits + bit_tree + encoded_bit_text
-        bytes = self.h.bits_to_bytes(all_bits)
-        self.assertEqual(
-            bytes, b'\x01\x00"\x96\x9b\x82\xca]\x12\x0b\x9d\x87\xff\xff\xff\xfa\xaa\xaa\xaa\x80\x00\x007\xbd\xe6f*\xaa\xaa\xba')
-
-    def test_get_additional_bits(self):
-        additional_bits = self.h.get_additional_bits("110")
-        self.assertEqual(additional_bits, "0000010100000")
-
     def test_separate_bits(self):
         bits = "0000010100000000000000000010111111000111"
         tree_bits, text_bits = self.h.separate_bits(bits)

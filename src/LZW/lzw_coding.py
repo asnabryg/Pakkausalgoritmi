@@ -78,38 +78,6 @@ class LzwCoding:
         # lisätään bittiesityksen alkuun tarvittavienbittien määrä
         return bit_info + bits
 
-    def bits_to_bytes(self, bits):
-        """Muuttaa bittiesityksen tavuiksi.
-
-        Args:
-            bits (str): bittiesitys
-
-        Returns:
-            bytearray: tavut
-        """
-        byte_array = bytearray()
-        # lisää bittien alkuu extra tavu, joka kertoo extra bittien määrän
-        bits = self.get_additional_bits(bits) + bits
-
-        for i in range(0, len(bits), 8):
-            byte = (bits[i:i+8])
-            byte_array.append(int(byte, 2))
-        return bytes(byte_array)
-
-    def get_additional_bits(self, bits):
-        """Laskee extra bitit bittiesityksen alkuun,
-            jotta bittiesitys on oikean kokoinen.
-
-        Args:
-            bits (str): bittiesity
-
-        Returns:
-            str: extra bittienmäärä bitteinä + extra bitit
-        """
-        count = 8 - (len(bits) % 8)
-        count_in_bits = "{0:08b}".format(count)
-        return count_in_bits + count * "0"
-
     def bits_to_output(self, bits):
         """Poistaa bittiesityksestä extrabitit ja bittien pituus infon.
         Luo niiden perusteella kokonaislukuesitykset listana.

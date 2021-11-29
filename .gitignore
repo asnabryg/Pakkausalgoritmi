@@ -10,3 +10,6 @@ htmlcov/
 __pycache__
 text_files/
 performance_test.py
+text_file_decoded.txt
+text_file_lzw.bin
+text_file_lzw.txt

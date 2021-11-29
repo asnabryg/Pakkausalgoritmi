@@ -1,9 +1,10 @@
 import os
 from Huffman.huffman_coding import HuffmanCoding
+from bit_conversion import bits_to_bytes
 
 
 class HuffmanEncoding():
-    """ Luokka, jossa pakataan tiedosto.
+    """ Luokka, jossa pakataan Huffman menetelmällä tiedosto.
     """
 
     def __init__(self):
@@ -40,7 +41,7 @@ class HuffmanEncoding():
             all_bits = tree_info_bits + bit_tree + encoded_bit_text
 
             # bitit muunnetaan tavuiksi ja tallennetaan uuteen tiedostoon
-            in_bytes = h.bits_to_bytes(all_bits)
+            in_bytes = bits_to_bytes(all_bits)
             encoded_file.write(in_bytes)
 
             return file_name
