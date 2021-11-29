@@ -66,3 +66,5 @@ Pienemmissä tiedostoissa Huffmanin pakkaus menetelmä vei voiton, mutta mitä s
 Huffman algoritmi onnistui 64 tavun kokoisen tiedoston myös pienentämään 5 tavulla, kun taas LZW algoritmillä tiedoston koko suureni parilla tavulla.  
 
 Pienempien tiedostojen pakkaaminen on usein turhaa, jos tiedostossa ei ole paljon toistoa.
+  
+![chart](./kuvia/huffman_lzw_chart.png)
