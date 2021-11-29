@@ -19,14 +19,14 @@ class LzwEncoding():
         Returns:
             str: polku pakattuun tiedostoon.
         """
-        
+
         file_name = os.path.splitext(file_path)[0]
         file_name += "_lzw.bin"
 
         lzw = LzwCoding()
 
         with open(file_path, "r", encoding="utf-8") as file, \
-            open(file_name, "wb") as encoded_file:
+                open(file_name, "wb") as encoded_file:
             text = file.read()
 
             # modostaa pakatun tulosteen tekstistä
@@ -41,4 +41,3 @@ class LzwEncoding():
 
             # palauttaa pakatun tiedoston polun
             return file_name
-

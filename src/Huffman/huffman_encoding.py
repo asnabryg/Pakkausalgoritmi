@@ -22,7 +22,7 @@ class HuffmanEncoding():
         h = HuffmanCoding()
 
         with open(file_path, "r", encoding="utf-8") as file, \
-            open(file_name, "wb") as encoded_file:
+                open(file_name, "wb") as encoded_file:
             text = file.read()
 
             # luodaan puu

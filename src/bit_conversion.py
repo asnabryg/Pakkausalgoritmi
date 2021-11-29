@@ -30,7 +30,6 @@ def get_additional_bits(bits):
     """
     count = 8 - (len(bits) % 8)
     count_in_bits = "{0:08b}".format(count)
-    print(count_in_bits + count * "0")
     return count_in_bits + count * "0"
 
 
