@@ -64,7 +64,7 @@ Valitse purkumenetelmä:
 Kun olet valinnut purkumenetelmän. Terminaali kysyy tiedoston polkua.
 Anna tiedosto, joka on pakattu tällä ohjelmalla.  
 - "_hm.bin" loppuinen tiedosto on pakattu Huffman menetelmällä ja voidaan purkaa sillä.
-- "_lzw" loppuinen tiedosto on pakattu Lempel-Ziv-Welch menetelmällä ja voidaan purkaa sillä.
+- "_lzw.bin" loppuinen tiedosto on pakattu Lempel-Ziv-Welch menetelmällä ja voidaan purkaa sillä.
 
 Tiedoson purun jälkeen terminaali kertoo, mihin tiedosto on purettu. Esim:
 ```
