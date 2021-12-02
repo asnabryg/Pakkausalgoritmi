@@ -50,6 +50,7 @@ Pakkauksen jälkeen terminaali kertoo, mihin tiedosto on pakattu ja pakkaustehon
 Tiedosto pakattu polkuun: /home/kayttaja/Documents/tiedosto_lzw.bin
 Pakattutiedosto n. 48.28 % pienempi.
 ``` 
+Tiedosto tallennetaan samaan kansioon, kuin pakkaamaton versio.
 
 ### Purku
 Valitaan "pura tiedosto" painamalla "2" ja "enter" nappeja.  
@@ -69,7 +70,8 @@ Tiedoson purun jälkeen terminaali kertoo, mihin tiedosto on purettu. Esim:
 ```
 Tiedosto purettu polkuun: /home/kayttaja/Documents/tiedosto_decoded.txt
 ```
-Purettu tiedosto saa nimensä loppuun "_decoded.txt", jotta voidaan helposti tunnistaa uusi tiedosto.
+Purettu tiedosto saa nimensä loppuun "_decoded.txt", jotta voidaan helposti tunnistaa uusi tiedosto.  
+Tiedosto tallennetaan samaan kansioon, kuin purkaamaton tiedosto.
 
 ### Virheiden hallinta
 
