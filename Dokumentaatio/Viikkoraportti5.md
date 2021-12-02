@@ -20,5 +20,7 @@ Käyttöliittymä toimii nyt kokonaan ja oikein. Lisäsin lisää virheiden hall
 Parantelen vielä dokumentaatiota ja korjaan lint virheitä.
 Jos aikaa jää, koitan tehdä oman tietorakenteen minimikeosta.
 
+Huomasin myös, että metodin `bits_to_tree()` aikavaatimuus ei olekaan O(n), joten se tullaan korjaamaan.
+
 ### Käytetty aika:
 5 tuntia
