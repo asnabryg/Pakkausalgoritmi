@@ -7,9 +7,6 @@ class LzwDecoding():
     """Luokka, jossa puretaan LZW menetelmällä pakattu tiedosto.
     """
 
-    def __init__(self):
-        pass
-
     def decode(self, file_path):
         """Metodi purkaa pakatun tiedoston.
 

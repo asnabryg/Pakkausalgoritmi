@@ -7,9 +7,6 @@ class HuffmanDecoding:
     """Luokka, jossa puretaan Huffman menetelmällä pakattu tiedosto.
     """
 
-    def __init__(self):
-        pass
-
     def decode(self, file_path):
         """Metodi purkaa annetun pakatun tiedoston.
 

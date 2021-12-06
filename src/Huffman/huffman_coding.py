@@ -1,13 +1,10 @@
-from heapq import heapify, heappush, heappop
 from Huffman.huffman_node import HuffmanNode as Node
+from min_heap import MinHeap
 
 
 class HuffmanCoding:
     """Luokka, jossa on kaikki Huffman koodaukseen tarvittavat metodit.
     """
-
-    def __init__(self):
-        pass
 
     def get_frequencies(self, text):
         """Luo sanakirjan, jossa on tekstin merkkien lukumäärät.
@@ -38,16 +35,17 @@ class HuffmanCoding:
         freqs = self.get_frequencies(text)
 
         # lisää minimikekoon kirjaimet ja niiden lukumäärät
-        heap = []
-        heapify(heap)
+        # heap = []
+        # heapify(heap)
+        heap = MinHeap()
         for char, freq in freqs.items():
-            heappush(heap, Node(char, freq))
+            heap.push(Node(char, freq))
 
         # kokoa puu alkaen pienimmästä solmusta
-        while len(heap) != 1:
-            left_node = heappop(heap)
-            right_node = heappop(heap)
-            heappush(heap, Node(
+        while heap.size != 1:
+            left_node = heap.pop()
+            right_node = heap.pop()
+            heap.push(Node(
                 char=None,
                 freq=left_node.freq + right_node.freq,
                 left=left_node,
@@ -55,7 +53,7 @@ class HuffmanCoding:
             ))
 
         # palauta puu
-        return heappop(heap)
+        return heap.pop()
 
     def tree_to_bits(self, tree):
         """ Koodaa puun bittiesityksen
@@ -92,48 +90,59 @@ class HuffmanCoding:
         Returns:
             Huffman_node: puun aloitus solmu
         """
-        i = 1
+
+        # juuri solmu
         start_node = Node()
-        current_node = start_node
+
+        # viimisimmät solmut, joihin voidaan lisätä lapsia
+        stack = [start_node]
+
+        i = 1
         while i < len(bits):
+            # viimeisin solmu, johon voi lisätä lapsia
+            last = stack[-1]
+
             if bits[i] == "0":
-                # luo nykyiselle solmulle uuden merkittömän lapsen
-                # ja nykyinen solmu muuttuu seuraavaksi solmuksi
-                new_node = Node(prev=current_node)
-                if current_node.left is None:
-                    current_node.set_left(new_node)
-                    current_node = new_node
-                elif current_node.right is None:
-                    current_node.set_right(new_node)
-                    current_node = new_node
+                # luo uuden merkittömän solmun
+                new_node = Node()
+
+                # uusi solmu lisätään pinosta viimeisimmän lapseksi
+                # ensin aina vasemmaksi
+                if last.left is None:
+                    last.set_left(new_node)
+
+                    # lisätään pinoon uusi solmu
+                    stack.append(new_node)
+
                 else:
-                    # jos haara jo käyty läpi, mennään bittiesityksessä taaksepäin,
-                    # että löytyy solmu, jonka läpikäynti jäi kesken,
-                    # ja nykyinen solmu muuttuu solmun vanhemmaksi
-                    current_node = current_node.prev
-                    i -= 1
+                    last.set_right(new_node)
+
+                    # poistaa viimeisimmän solmun pinosta,
+                    # koska siihen ei voida enää lisätä lapsia
+                    stack.pop()
+                    stack.append(new_node)
             else:
-                # haetaan merkki bittiesityksestä
+                # hakee merkin bittiesityksestä
                 char = chr(int(bits[i+1: i+9], 2))
-                # siirytään bittiesityksessä merkin yli
+
+                # siirrytään bittiesityksessä merkin yli
                 i += 8
-                # merkillinen solmu lisätään nykyisen solmun lapseksi
+
+                # merkillinen solmu lisätään solmun lapseksi
                 # ensin aina vasemmaksi solmuksi
-                new_node = Node(char=char, prev=current_node)
-                if current_node.left is None:
-                    current_node.set_left(new_node)
-                elif current_node.right is None:
-                    current_node.set_right(new_node)
+                new_node = Node(char=char)
+                if last.left is None:
+                    last.set_left(new_node)
+
                 else:
-                    # jos haara jo käyty läpi, mennään bittiesityksessä taaksepäin,
-                    # että löytyy solmu, jonka läpikäynti jäi kesken,
-                    # ja nykyinen solmu muuttuu solmun vanhemmaksi
-                    current_node = current_node.prev
-                    i -= 9
-            # mennään bitti esityksessä yksi eteenpäin
+                    last.set_right(new_node)
+
+                    # poistaa viimeisimmän solmun pinosta,
+                    # koska siihen ei voida enää lisätä lapsia
+                    stack.pop()
             i += 1
 
-        # palauttaa puumallin aloitus solmun
+        # palauttaa puumallin juuri solmun
         return start_node
 
     def get_char_bits(self, tree):

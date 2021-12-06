@@ -7,9 +7,6 @@ class HuffmanEncoding():
     """ Luokka, jossa pakataan Huffman menetelmällä tiedosto.
     """
 
-    def __init__(self):
-        pass
-
     def encode(self, file_path):
         """Metodi pakkaa annetun tiedoston.
 

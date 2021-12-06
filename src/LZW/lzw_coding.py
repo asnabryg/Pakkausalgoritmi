@@ -3,9 +3,6 @@ class LzwCoding:
     """Luokka, jossa on kaikki Lempel-Ziv-Welch algoritmiin tarvittavat metodit.
     """
 
-    def __init__(self):
-        pass
-
     def create_output(self, text: str):
         """Luo pakatun listan merkkien ja merkkijonojen kokonaislukuesityksistä.
 

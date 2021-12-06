@@ -16,7 +16,6 @@ class HuffmanNode:
         self.char = char
         self.freq = freq
         self.left, self.right = left, right
-        self.prev = prev
         self.code = ""
 
     def set_left(self, left_node):
