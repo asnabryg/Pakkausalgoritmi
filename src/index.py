@@ -1,5 +1,4 @@
 import os
-from Huffman.huffman_coding import HuffmanCoding
 from Huffman.huffman_encoding import HuffmanEncoding
 from Huffman.huffman_decoding import HuffmanDecoding
 from LZW.lzw_encoding import LzwEncoding
@@ -117,20 +116,5 @@ def decoding():
             print()
 
 
-# def test():
-#     text = "aaaaaaaaaaeeeeeeeeeeeeeeeiiiiiiiiiiiisssttttppppppppppppp"
-#     h = HuffmanCoding()
-#     tree = h.create_tree(text)
-#     bits = h.tree_to_bits(tree)
-#     tree_old = h.bits_to_tree(bits)
-#     tree_new = h.bits_to_tree_new(bits)
-#     print(str(tree_old) == str(tree_new))
-#     print()
-#     print(tree_old)
-#     print()
-#     print(tree_new)
-
-
 if __name__ == '__main__':
     main()
-    # test()

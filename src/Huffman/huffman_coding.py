@@ -35,8 +35,6 @@ class HuffmanCoding:
         freqs = self.get_frequencies(text)
 
         # lisää minimikekoon kirjaimet ja niiden lukumäärät
-        # heap = []
-        # heapify(heap)
         heap = MinHeap()
         for char, freq in freqs.items():
             heap.push(Node(char, freq))
