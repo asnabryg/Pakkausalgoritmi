@@ -17,7 +17,7 @@ Luokka alustaa pakattavan tekstin, jota käytetään eri lzw metodien testaukses
 
 ## Testauskattavuus
 Ohjelman tämän hetkinen (29.11.2021) testauskattavuus on 100%.
-![testikattavuus](./kuvia/testikattavuus_29.11.2021.png)
+![testikattavuus](./kuvia/testikattavuus_8.12.2021.png)
 
 # Suorituskyky
 Testauksessa käytetiin satunnaisgeneroitua Lorem ipsumia. Tiedostojen koot väliltä 512-1 048 576 tavua. Pakkausteho lasketaan kuinka monta prosenttia pienempi pakattu tiedosto on.
