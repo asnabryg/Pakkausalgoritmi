@@ -16,7 +16,7 @@ Luokkaa `LzwCoding` testataan [TestLempelZivWelchCoding](https://github.com/asna
 Luokka alustaa pakattavan tekstin, jota käytetään eri lzw metodien testauksessa. Testit ovat yksin kertaisia, ja testaa kaikki metodit läpi.
 
 ## Testauskattavuus
-Ohjelman tämän hetkinen (29.11.2021) testauskattavuus on 100%.
+Ohjelman tämän hetkinen (8.12.2021) testauskattavuus on 100%.
 ![testikattavuus](./kuvia/testikattavuus_8.12.2021.png)
 
 # Suorituskyky
