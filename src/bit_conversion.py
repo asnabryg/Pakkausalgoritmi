@@ -29,7 +29,7 @@ def get_additional_bits(bits):
         str: extra bittienmäärä bitteinä + extra bitit
     """
     count = 8 - (len(bits) % 8)
-    count_in_bits = "{0:08b}".format(count)
+    count_in_bits = format(count, "08b")
     return count_in_bits + count * "0"
 
 

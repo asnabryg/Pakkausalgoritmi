@@ -29,7 +29,7 @@ class HuffmanEncoding():
             bit_tree = h.tree_to_bits(tree)
 
             # puun koko bitteinä
-            tree_info_bits = "{0:016b}".format(len(bit_tree))
+            tree_info_bits = format(len(bit_tree), "016b")
 
             # pakattu teksti bittiesityksenä
             encoded_bit_text = h.text_to_bits(text, tree)

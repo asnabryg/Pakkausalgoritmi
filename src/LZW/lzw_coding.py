@@ -29,9 +29,9 @@ class LzwCoding:
         output = []
         for i in range(len(text)):
             # seuraava merkki
-            next = text[i+1] if i != len(text)-1 else ""
+            next_char = text[i+1] if i != len(text)-1 else ""
 
-            new = current + next
+            new = current + next_char
             if new not in code_table:
                 # lisää tulosteeseen nykyisen merkkijonon arvo
                 output.append(code_table[current])
@@ -43,7 +43,7 @@ class LzwCoding:
                 value += 1
 
                 # valitse seuraava tarkistettava merkki
-                current = next
+                current = next_char
             else:
                 # valitse seuraava tarkistettava merkkijono
                 current = new
@@ -67,10 +67,10 @@ class LzwCoding:
         max_value = max(output)
 
         # tarvittavien bittien määrä lukujen esittämiseen
-        max_bit_length = len("{:b}".format(max_value))
+        max_bit_length = len(format(max_value, "b"))
 
         # tarvittavien bittien määrä bitteinä
-        bit_info = "{0:08b}".format(max_bit_length)
+        bit_info = format(max_bit_length, "08b")
 
         bits = ""
         # luodaan bittiesitys luvuista
@@ -125,15 +125,15 @@ class LzwCoding:
 
         for i in range(len(output)-1):
             # seuraava merkki
-            next = str(output[i+1])
-            c = code_table[next][0] if next in code_table else code_table[current]
+            next_char = str(output[i+1])
+            c = code_table[next_char][0] if next_char in code_table else code_table[current]
 
             # lisätään merkkien yhdiste sanakirjaan
             chars = code_table[current] + c
             code_table[str(value)] = chars
 
             value += 1
-            current = next
+            current = next_char
 
             # lisätään tekstiin purettu merkkiyhdiste
             text += code_table[current]

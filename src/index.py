@@ -41,14 +41,14 @@ def encoding():
         cmd = input("> ")
         if cmd == "3":
             break
-        file_path = input("Syötä tiedoston polku: ")
         if cmd == "1":
             # Huffmann
             print()
             try:
+                file_path = input("Syötä tiedoston polku: ")
                 h_encoding = HuffmanEncoding()
-                og_size = os.path.getsize(file_path)
-                encoded_file_path = h_encoding.encode(file_path)
+                og_size, encoded_file_path = os.path.getsize(
+                    file_path), h_encoding.encode(file_path)
                 encoded_size = os.path.getsize(encoded_file_path)
                 precent = round((1 - encoded_size / og_size) * 100, 2)
                 print("...")
@@ -58,17 +58,18 @@ def encoding():
             except FileNotFoundError:
                 print("Virheellinen polku tai tiedosto.")
                 print()
-            except EmptyFileException as e:
-                print(e)
+            except EmptyFileException:
+                print("Tyhjä tiedosto.")
                 print()
         elif cmd == "2":
             # LZW
             print()
             try:
+                file_path = input("Syötä tiedoston polku: ")
                 lzw_encoding = LzwEncoding()
-                og_size = os.path.getsize(file_path)
                 encoded_file_path = lzw_encoding.encode(file_path)
-                encoded_size = os.path.getsize(encoded_file_path)
+                og_size, encoded_size = os.path.getsize(
+                    file_path), os.path.getsize(encoded_file_path)
                 precent = round((1 - encoded_size / og_size) * 100, 2)
                 print("...")
                 print("Tiedosto pakattu polkuun: " + encoded_file_path)
@@ -77,9 +78,9 @@ def encoding():
             except FileNotFoundError:
                 print("Virheellinen polku tai tiedosto.")
                 print()
-            except EmptyFileException as e:
-                print(e)
-                print()      
+            except EmptyFileException:
+                print("Tyhjä tiedosto.")
+                print()
         else:
             print("Virheellinen syöte.")
             print()

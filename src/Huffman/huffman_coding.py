@@ -1,4 +1,3 @@
-from os import error
 from Huffman.huffman_node import HuffmanNode as Node
 from min_heap import MinHeap
 from custom_expections import EmptyFileException
@@ -7,6 +6,12 @@ from custom_expections import EmptyFileException
 class HuffmanCoding:
     """Luokka, jossa on kaikki Huffman koodaukseen tarvittavat metodit.
     """
+
+    def __init__(self):
+        """Luokan konstruktori, joka alustaa apumuuttujat char_bits ja bits.
+        """
+        self.char_bits = {}
+        self.bits = ""
 
     def get_frequencies(self, text):
         """Luo sanakirjan, jossa on tekstin merkkien lukumäärät.
@@ -66,20 +71,18 @@ class HuffmanCoding:
         Returns:
             str: puu koodattuna bitteihin merkkijonona
         """
-        global bits
-        bits = ""
+        self.bits = ""
 
         def recursion(node):
-            global bits
             if node.left is None and node.right is None:
                 # bitti 1:n oikealla puolella seuraavat 8 bittiä kertoo mikä merkki kyseessä
-                bits += "1" + "{0:08b}".format(ord(node.char))
+                self.bits += "1" + format(ord(node.char), "08b")
             else:
                 # bitti 0:n oikealla puolella on solmun lapset
-                bits += "0"
+                self.bits += "0"
                 recursion(node.left)
                 recursion(node.right)
-            return bits
+            return self.bits
 
         return recursion(tree)
 
@@ -162,25 +165,23 @@ class HuffmanCoding:
         Returns:
             sanakirja: merkkien pakatut bittiesitykset
         """
-        global char_bits
-        char_bits = {}
+        self.char_bits = {}
 
         def recursion(node, bits=""):
-            global char_bits
             if node is None:
                 return
             if node.char is not None:
-                char_bits[node.char] = bits
+                self.char_bits[node.char] = bits
 
             recursion(node.left, bits + "0")
             recursion(node.right, bits + "1")
 
         recursion(tree)
-        if len(char_bits) == 1:
+        if len(self.char_bits) == 1:
             # kun tekstissä vain yksi uniikki kirjain
-            char_bits = {tree.char: "0"}
+            self.char_bits = {tree.char: "0"}
 
-        return char_bits
+        return self.char_bits
 
     def text_to_bits(self, text, tree):
         """Luo uuden bittiesityksen pakattavasta tekstistä.

@@ -49,14 +49,14 @@ class MinHeap:
         # toistaa, kunnes nykyisellä solmulla ei ole lapsia
         while (i * 2) <= self.size:
             # pienimmän lapsen indeksi
-            min = self.min_child(i)
+            min_child = self.get_min_child(i)
 
-            if self.list[i] > self.list[min]:
+            if self.list[i] > self.list[min_child]:
                 # jos nykynen solmu on suurempi kuin pienin lapsi; vaihda solmut keskenään
-                self.list[i], self.list[min] = self.list[min], self.list[i]
-            i = min
+                self.list[i], self.list[min_child] = self.list[min_child], self.list[i]
+            i = min_child
 
-    def min_child(self, i):
+    def get_min_child(self, i):
         """Palauttaa pienimmän lapsen.
 
         Args:
@@ -68,11 +68,11 @@ class MinHeap:
         if (i * 2) + 1 > self.size:
             # palauttaa solmun ainoan lapsen
             return i * 2
-        else:
-            # palauttaa pienimmän lapsen
-            if self.list[i*2] < self.list[(i*2)+1]:
-                return i * 2
-            return (1 * 2) + 1
+
+        # palauttaa pienimmän lapsen
+        if self.list[i*2] < self.list[(i*2)+1]:
+            return i * 2
+        return (1 * 2) + 1
 
     def pop(self):
         """Poistaa ja palauttaa pienimmän solmun keosta.

@@ -3,7 +3,7 @@ class HuffmanNode:
     """Luokka, jota käytetään solmuina Huffmanin puumallissa
     """
 
-    def __init__(self, char=None, freq=None, left=None, right=None, prev=None):
+    def __init__(self, char=None, freq=None, left=None, right=None):
         """Luokan kostruktori, joka luo uuden solmun.
 
         Args:
