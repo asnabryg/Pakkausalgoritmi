@@ -1,9 +1,11 @@
 import os
 import unittest
+import pytest
 from LZW.lzw_coding import LzwCoding
 from LZW.lzw_encoding import LzwEncoding
 from LZW.lzw_decoding import LzwDecoding
 from bit_conversion import bits_to_bytes, bytes_to_bits
+from custom_expections import EmptyFileException
 
 
 class TestLempelZivWelchCoding(unittest.TestCase):
@@ -13,8 +15,8 @@ class TestLempelZivWelchCoding(unittest.TestCase):
         self.lzw_encoding = LzwEncoding()
         self.text = "ttthisistheeestitthe"
         self.output = self.lzw.create_output(self.text)
-        self.test_file_path = os.path.dirname(os.path.abspath(__file__))
-        self.test_file_path += "/test_file.txt"
+        self.this_path = os.path.dirname(os.path.abspath(__file__))
+        self.test_file_path = self.this_path + "/test_file.txt"
 
     def test_create_output(self):
         self.assertEqual(self.output, [116, 256, 104, 105, 115,
@@ -38,15 +40,33 @@ class TestLempelZivWelchCoding(unittest.TestCase):
 
     def test_lzw_encode(self):
         encoded_file_path = self.lzw_encoding.encode(self.test_file_path)
-        includes = True if "src/LZW/tests/test_file_lzw.bin" in encoded_file_path else False
+        includes = True if "src/tests/lzw/test_file_lzw.bin" in encoded_file_path else False
         self.assertEqual(True, includes)
+        with open(encoded_file_path, "rb") as file:
+            in_bytes = file.read()
+            self.assertEqual(
+                in_bytes, b'\x01\x04\x9d \x06\x83I\xce\x06t4\x19a\x073\xa1\xa6\x02e')
 
     def test_lzw_decoding(self):
         lzw_decoding = LzwDecoding()
         encoded_file_path = self.lzw_encoding.encode(self.test_file_path)
         decoded_file_path = lzw_decoding.decode(encoded_file_path)
-        includes = True if "src/LZW/tests/test_file_decoded.txt" in decoded_file_path else False
+        includes = True if "src/tests/lzw/test_file_decoded.txt" in decoded_file_path else False
         self.assertEqual(True, includes)
         with open(decoded_file_path, "r", encoding="utf-8") as file:
             text = file.read()
             self.assertEqual(self.text, text)
+
+    def test_empty_file_exception(self):
+        with pytest.raises(EmptyFileException):
+            self.lzw.create_output("")
+    
+    def test_file_with_one_char(self):
+        encoded_file_path = self.lzw_encoding.encode(
+            self.this_path[:len(self.this_path) - 3] + "one_char.txt")
+        lzw_decoding = LzwDecoding()
+        decoded_file_path = lzw_decoding.decode(encoded_file_path)
+        with open(decoded_file_path, "r", encoding="utf-8") as file:
+            text = file.read()
+            self.assertEqual(text, "a")
+

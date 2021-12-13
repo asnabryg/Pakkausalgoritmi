@@ -26,6 +26,7 @@ class LzwDecoding():
         with open(file_path, "rb") as file, \
                 open(file_name, "w", encoding="utf-8") as decoded_file:
             in_bytes = file.read()
+            print(in_bytes)
 
             # muunnetaan tavut bittiesitykseksi
             bits = bytes_to_bits(in_bytes)

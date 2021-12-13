@@ -1,8 +1,10 @@
 import os
 import unittest
+import pytest
 from Huffman.huffman_coding import HuffmanCoding
 from Huffman.huffman_encoding import HuffmanEncoding
 from Huffman.huffman_decoding import HuffmanDecoding
+from custom_expections import EmptyFileException
 
 
 class TestHuffmanCoding(unittest.TestCase):
@@ -12,10 +14,9 @@ class TestHuffmanCoding(unittest.TestCase):
         self.hm_encoding = HuffmanEncoding()
         self.text = "aaaaaaaaaaeeeeeeeeeeeeeeeiiiiiiiiiiiisssttttppppppppppppp "
         self.tree = self.h.create_tree(self.text)
-        self.test_file_path = os.path.dirname(os.path.abspath(__file__))
-        self.test_file_path += "/test_file.txt"
+        self.this_path = os.path.dirname(os.path.abspath(__file__))
+        self.test_file_path = self.this_path + "/test_file.txt"
 
-    def test_getting_frequencies(self):
         freqs = self.h.get_frequencies("testi tekstin pätkä")
         self.assertEqual(freqs, {
             "t": 5, "e": 2, "s": 2, "i": 2, "k": 2, "n": 1, "p": 1, "ä": 2, " ": 2
@@ -60,15 +61,32 @@ class TestHuffmanCoding(unittest.TestCase):
 
     def test_huffman_encode(self):
         encoded_file_path = self.hm_encoding.encode(self.test_file_path)
-        includes = True if "src/Huffman/tests/test_file_hm.bin" in encoded_file_path else False
+        includes = True if "src/tests/huffman/test_file_hm.bin" in encoded_file_path else False
         self.assertEqual(True, includes)
+        with open(encoded_file_path, "rb") as file:
+            in_bytes = file.read()
+            self.assertEqual(
+                in_bytes, b'\x01\x00"\x96\x9b\x82\xca]\x12\x0b\x9d\x87\xff\xff\xff\xfa\xaa\xaa\xaa\x80\x00\x007\xbd\xe6f*\xaa\xaa\xba')
 
     def test_huffman_decode(self):
         hm_decoding = HuffmanDecoding()
         encoded_file_path = self.hm_encoding.encode(self.test_file_path)
         decoded_file_path = hm_decoding.decode(encoded_file_path)
-        includes = True if "src/Huffman/tests/test_file_decoded.txt" in decoded_file_path else False
+        includes = True if "src/tests/huffman/test_file_decoded.txt" in decoded_file_path else False
         self.assertEqual(True, includes)
         with open(decoded_file_path, "r", encoding="utf-8") as file:
             text = file.read()
             self.assertEqual(self.text, text)
+
+    def test_empty_file_exception(self):
+        with pytest.raises(EmptyFileException):
+            self.h.get_frequencies("")
+
+    def test_file_with_one_char(self):
+        encoded_file_path = self.hm_encoding.encode(
+            self.this_path[:len(self.this_path)-7] + "one_char.txt")
+        hm_decoding = HuffmanDecoding()
+        decoded_file_path = hm_decoding.decode(encoded_file_path)
+        with open(decoded_file_path, "r", encoding="utf-8") as file:
+            text = file.read()
+            self.assertEqual(text, "a")

@@ -217,11 +217,7 @@ class HuffmanCoding:
 
         # erotellaan puu- ja tekstibitit
         tree_bits = bits[:tree_bits_count]
-        if len(bits) > 9:
-            text_bits = bits[tree_bits_count:]
-        else:
-            # kun tekstissä vain yksi uniikki merkki
-            text_bits = bits[1:]
+        text_bits = bits[tree_bits_count:]
 
         return tree_bits, text_bits
 
