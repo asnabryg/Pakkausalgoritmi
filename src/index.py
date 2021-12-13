@@ -3,6 +3,7 @@ from Huffman.huffman_encoding import HuffmanEncoding
 from Huffman.huffman_decoding import HuffmanDecoding
 from LZW.lzw_encoding import LzwEncoding
 from LZW.lzw_decoding import LzwDecoding
+from custom_expections import EmptyFileException
 
 
 def main():
@@ -36,7 +37,10 @@ def encoding():
         print("Valitse pakkausmenetelmä:")
         print("  1. Huffman")
         print("  2. Lempel Ziv Welch")
+        print("  3. edellinen")
         cmd = input("> ")
+        if cmd == "3":
+            break
         file_path = input("Syötä tiedoston polku: ")
         if cmd == "1":
             # Huffmann
@@ -54,6 +58,9 @@ def encoding():
             except FileNotFoundError:
                 print("Virheellinen polku tai tiedosto.")
                 print()
+            except EmptyFileException as e:
+                print(e)
+                print()
         elif cmd == "2":
             # LZW
             print()
@@ -70,6 +77,9 @@ def encoding():
             except FileNotFoundError:
                 print("Virheellinen polku tai tiedosto.")
                 print()
+            except EmptyFileException as e:
+                print(e)
+                print()      
         else:
             print("Virheellinen syöte.")
             print()
@@ -81,7 +91,10 @@ def decoding():
         print("Valitse purkumenetelmä:")
         print("  1. Huffman")
         print("  2. Lempel Ziv Welch")
+        print("  3. edellinen")
         cmd = input("> ")
+        if cmd == "3":
+            break
         file_path = input("Syötä tiedoston polku: ")
         if cmd == "1":
             # Huffman

@@ -1,6 +1,7 @@
 import unittest
 from min_heap import MinHeap
 
+
 class TestBitConversion(unittest.TestCase):
 
     def setUp(self):
@@ -19,7 +20,7 @@ class TestBitConversion(unittest.TestCase):
         self.heap.push(11)
         self.assertEqual(self.heap.list, [0, 2, 5, 8, 12, 11])
         self.assertEqual(self.heap.size, 5)
-    
+
     def test_pop(self):
         self.heap.push(5)
         self.heap.push(2)
@@ -30,4 +31,3 @@ class TestBitConversion(unittest.TestCase):
         for _ in range(4):
             self.heap.pop()
         self.assertEqual(self.heap.pop(), None)
-

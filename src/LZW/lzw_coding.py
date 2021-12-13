@@ -1,3 +1,5 @@
+from custom_expections import EmptyFileException
+
 
 class LzwCoding:
     """Luokka, jossa on kaikki Lempel-Ziv-Welch algoritmiin tarvittavat metodit.
@@ -12,6 +14,10 @@ class LzwCoding:
         Returns:
             list: lista kokonaislukuesityksistä
         """
+
+        if text == "":
+            raise EmptyFileException
+
         code_table = {}
         # tallennetaan yksittäiset kirjaimet ja niiden Unicode arvo sanakirjaan
         for char in text:

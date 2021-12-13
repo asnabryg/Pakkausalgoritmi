@@ -1,5 +1,7 @@
+from os import error
 from Huffman.huffman_node import HuffmanNode as Node
 from min_heap import MinHeap
+from custom_expections import EmptyFileException
 
 
 class HuffmanCoding:
@@ -15,6 +17,8 @@ class HuffmanCoding:
         Returns:
             sanakirja: valmis sanakirja
         """
+        if text == "":
+            raise EmptyFileException
         freqs = {}
         for char in text:
             if char not in freqs:
@@ -88,6 +92,12 @@ class HuffmanCoding:
         Returns:
             Huffman_node: puun aloitus solmu
         """
+
+        if len(bits) == 9:
+            # kun tekstissä on vain yksi uniikki merkki
+            return Node(
+                char=chr(int(bits[1: 9], 2))
+            )
 
         # juuri solmu
         start_node = Node()
@@ -166,6 +176,10 @@ class HuffmanCoding:
             recursion(node.right, bits + "1")
 
         recursion(tree)
+        if len(char_bits) == 1:
+            # kun tekstissä vain yksi uniikki kirjain
+            char_bits = {tree.char: "0"}
+
         return char_bits
 
     def text_to_bits(self, text, tree):
@@ -203,7 +217,11 @@ class HuffmanCoding:
 
         # erotellaan puu- ja tekstibitit
         tree_bits = bits[:tree_bits_count]
-        text_bits = bits[tree_bits_count:]
+        if len(bits) > 9:
+            text_bits = bits[tree_bits_count:]
+        else:
+            # kun tekstissä vain yksi uniikki merkki
+            text_bits = bits[1:]
 
         return tree_bits, text_bits
 
@@ -219,6 +237,10 @@ class HuffmanCoding:
         """
         text = ""
         node = tree
+        if node.char is not None:
+            # jos tekstissä vain yksi uniikki merkki
+            return node.char * len(text_bits)
+
         for bit in text_bits:
             node = node.left if bit == "0" else node.right
             if node.left is None and node.right is None:

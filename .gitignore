@@ -13,3 +13,7 @@ performance_test.py
 text_file_decoded.txt
 text_file_lzw.bin
 text_file_lzw.txt
+tyhja_decoded.txt
+tyhja_hm.bin
+tyhja_lzw.bin
+tyhja.txt
