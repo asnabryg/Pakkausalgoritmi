@@ -1,6 +1,6 @@
 # Testausdokumentti
 
-Pakkausalgoritmit on yksikkötestattu Unittest-sovelluskehyksellä
+Pakkausalgoritmit ja niihin tarvittavat apumetodit on yksikkötestattu Unittest-sovelluskehyksellä
 
 ## Huffman
 Luokkaa `HuffmanCoding` testataan [TestHuffmanCoding](https://github.com/asnabryg/Pakkausalgoritmi/blob/main/src/Huffman/tests/huffman_coding_test.py)-testiluokalla.
@@ -16,8 +16,8 @@ Luokkaa `LzwCoding` testataan [TestLempelZivWelchCoding](https://github.com/asna
 Luokka alustaa pakattavan tekstin, jota käytetään eri lzw metodien testauksessa. Testit ovat yksin kertaisia, ja testaa kaikki metodit läpi.
 
 ## Testauskattavuus
-Ohjelman tämän hetkinen (8.12.2021) testauskattavuus on 100%.
-![testikattavuus](./kuvia/testikattavuus_8.12.2021.png)
+Ohjelman testauskattavuus on 100%.
+![testikattavuus](./kuvia/testikattavuus_18.12.2021.png)
 
 # Suorituskyky
 Testauksessa käytetiin satunnaisgeneroitua Lorem ipsumia. Tiedostojen koot väliltä 512-1 048 576 tavua. Pakkausteho lasketaan kuinka monta prosenttia pienempi pakattu tiedosto on.
@@ -64,7 +64,8 @@ Pakkausteho nousi muutamalla prosentilla, mitä suurempi tiedoston koko oli. Nä
 
 Pienemmissä tiedostoissa Huffmanin pakkaus menetelmä vei voiton, mutta mitä suurempi tiedosto on, niin sitä paremmin LWZ menetlmä toimi. LZW algoritmi pääsi helposti yli 50% pakkaustehon, mitä Huffman algoritmi ei saavuttanut.  
 Huffman algoritmi onnistui 64 tavun kokoisen tiedoston myös pienentämään 5 tavulla, kun taas LZW algoritmillä tiedoston koko suureni parilla tavulla.  
-
 Pienempien tiedostojen pakkaaminen on usein turhaa, jos tiedostossa ei ole paljon toistoa.
+  
+LZW pakkausaika oli melkein tuplasti korkeampi, kuin Huffmanin, mutta LZW pärjäsi huomattavasti paremmin purkuajoissa.
   
 ![chart](./kuvia/huffman_lzw_chart.png)
