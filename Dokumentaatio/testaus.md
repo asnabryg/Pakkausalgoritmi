@@ -44,23 +44,23 @@ Testauksessa käytetiin satunnaisgeneroitua Lorem ipsumia. Tiedostojen koot väl
 Pakkausteho nousi muutamalla prosentilla, mitä suurempi tiedoston koko oli. Näyttäisi siltä, että Huffman koodaus onnistuu hyvin n. 40-50% pienentämään tiedoston kokoa yli 512 tavun kokoisessa tiedostossa.
 
 ## Lempel-Ziv-Welch
-| alkuperäinen koko (tavua) | pakattu koko (tavua) | pakkausteho (%)|
-|---|---|---|
-| 64 | 66 | -3.12 |
-| 128 | 115 | 10.16 |
-| 256 | 206 | 19.3 |
-| 512 | 398 | 22.27 |
-| 1 024 | 689 | 32.71 |
-| 2 048 | 1 305 | 36.28 |
-| 4 096 | 2 240 | 45.31 |
-| 8 192 | 4 224 | 48.44 |
-| 16 384 | 7 510 | 54.16 |
-| 32 768 | 12 127 | 62.99 |
-| 65 536 | 21 759 | 66.8 |
-| 131 072 | 40 966 | 68.75 |
-| 262 144 | 79 535 | 69.66 |
-| 524 288 | 155 703 | 70.3 |
-| 1 048 576 | 300 897 | 71.3 |
+| alkuperäinen koko (tavua) | pakattu koko (tavua) | pakkausteho (%) | pakkausaika (ms) | purkuaika (ms) |
+|---|---|---|---|---|
+| 64 | 66 | -3.12 | 0.283 | 0.248 |
+| 128 | 115 | 10.16 | 0.312 | 0.295 |
+| 256 | 206 | 19.3 | 0.404 | 0.437 |
+| 512 | 398 | 22.27 | 0.702 | 0.601 |
+| 1 024 | 689 | 32.71 | 1.173 | 0.959 |
+| 2 048 | 1 305 | 36.28 | 1.667 | 1.463 |
+| 4 096 | 2 240 | 45.31 | 3.199 | 2.489 |
+| 8 192 | 4 224 | 48.44 | 5.691 | 4.228 |
+| 16 384 | 7 510 | 54.16 | 10.431 | 7.167 |
+| 32 768 | 12 127 | 62.99 | 18.287 | 12.246 |
+| 65 536 | 21 759 | 66.8 | 34.484 | 19.169 |
+| 131 072 | 40 966 | 68.75 | 67.464 | 35.577 |
+| 262 144 | 79 535 | 69.66 | 129.747 | 65.366 |
+| 524 288 | 155 703 | 70.3 | 258.632 | 122.917 |
+| 1 048 576 | 300 897 | 71.3 | 541.388 | 235.865 |
 
 Pienemmissä tiedostoissa Huffmanin pakkaus menetelmä vei voiton, mutta mitä suurempi tiedosto on, niin sitä paremmin LWZ menetlmä toimi. LZW algoritmi pääsi helposti yli 50% pakkaustehon, mitä Huffman algoritmi ei saavuttanut.  
 Huffman algoritmi onnistui 64 tavun kokoisen tiedoston myös pienentämään 5 tavulla, kun taas LZW algoritmillä tiedoston koko suureni parilla tavulla.  
