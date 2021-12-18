@@ -45,6 +45,6 @@ def bytes_to_bits(in_bytes):
 
     bits = ""
     for byte in in_bytes:
-        bits += bin(byte)[2:].rjust(8, "0")
+        bits = bits + bin(byte)[2:].zfill(8)
 
     return bits

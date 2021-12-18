@@ -49,6 +49,7 @@ class HuffmanCoding:
             heap.push(Node(char, freq))
 
         # kokoa puu alkaen pienimmästä solmusta
+        # print("heap", heap.list)
         while heap.size != 1:
             left_node = heap.pop()
             right_node = heap.pop()
@@ -238,9 +239,10 @@ class HuffmanCoding:
             # jos tekstissä vain yksi uniikki merkki
             return node.char * len(text_bits)
 
-        for bit in text_bits:
-            node = node.left if bit == "0" else node.right
+        for b in text_bits:
+            node = node.left if b == "0" else node.right
             if node.left is None and node.right is None:
-                text += node.char
+                text = text + node.char
                 node = tree
+
         return text

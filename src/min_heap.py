@@ -68,11 +68,10 @@ class MinHeap:
         if (i * 2) + 1 > self.size:
             # palauttaa solmun ainoan lapsen
             return i * 2
-
-        # palauttaa pienimmän lapsen
+            # palauttaa pienimmän lapsen
         if self.list[i*2] < self.list[(i*2)+1]:
             return i * 2
-        return (1 * 2) + 1
+        return (i * 2) + 1
 
     def pop(self):
         """Poistaa ja palauttaa pienimmän solmun keosta.

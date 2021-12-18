@@ -38,6 +38,7 @@ class HuffmanDecoding:
             # purataan teksti alkuperäiseen mutoon puumallin avulla
             # ja tallennetaan se tiedostoon
             decoded_text = h.bits_to_text(text_bits, tree)
+
             decoded_file.write(decoded_text)
 
             # palauttaa puretun tiedoston polun
