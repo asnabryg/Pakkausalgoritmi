@@ -23,23 +23,23 @@ Ohjelman tämän hetkinen (8.12.2021) testauskattavuus on 100%.
 Testauksessa käytetiin satunnaisgeneroitua Lorem ipsumia. Tiedostojen koot väliltä 512-1 048 576 tavua. Pakkausteho lasketaan kuinka monta prosenttia pienempi pakattu tiedosto on.
 
 ##  Huffman
-| alkuperäinen koko (tavua) | pakattu koko (tavua) | pakkausteho (%)|
-|---|---|---|
-| 64 | 59 | 7.81 |
-| 128 | 96 | 25.0 |
-| 256 | 175 | 31.64 |
-| 512 | 299 | 41.6 |
-| 1 024 | 573 | 44.04 |
-| 2 048 | 1 101 | 46.24 |
-| 4 096 | 2 179 | 46.8 |
-| 8 192 | 4 332 | 47.12 |
-| 16 384 | 8 624 | 47.36 |
-| 32 768 | 17 204 | 47.5 |
-| 65 536 | 34 320 | 47.63 |
-| 131 072 | 68 540 | 47.71 |
-| 262 144 | 137 019 | 47.73 |
-| 524 288 | 273 979 | 47.74 |
-| 1 048 576 | 547 899 | 47.75 |
+| alkuperäinen koko (tavua) | pakattu koko (tavua) | pakkausteho (%) | pakkausaika (ms) | purkuaika (ms) |
+|---|---|---|---|---|
+| 64 | 59 | 7.81 | 0.395 | 0.244 |
+| 128 | 96 | 25.0 | 0.454 | 0.303 |
+| 256 | 175 | 31.64 | 0.623 | 0.463 |
+| 512 | 299 | 41.6 | 0.666 | 0.507 |
+| 1 024 | 573 | 44.04 | 0.781 | 0.772 |
+| 2 048 | 1 101 | 46.24 | 1.190 | 1.473 |
+| 4 096 | 2 179 | 46.8 | 1.792 | 2.435 |
+| 8 192 | 4 332 | 47.12 | 3.183 | 5.004 |
+| 16 384 | 8 624 | 47.36 | 5.626 | 8.978 |
+| 32 768 | 17 204 | 47.5 | 11.539 | 17.473 |
+| 65 536 | 34 320 | 47.63 | 21.102 | 35.060 |
+| 131 072 | 68 540 | 47.71 | 39.827 | 70.352 |
+| 262 144 | 137 019 | 47.73 | 79.377 | 136.311 |
+| 524 288 | 273 979 | 47.74 | 158.512 | 272.850 |
+| 1 048 576 | 547 899 | 47.75 | 317.212 | 541.018 |
 
 Pakkausteho nousi muutamalla prosentilla, mitä suurempi tiedoston koko oli. Näyttäisi siltä, että Huffman koodaus onnistuu hyvin n. 40-50% pienentämään tiedoston kokoa yli 512 tavun kokoisessa tiedostossa.
 
