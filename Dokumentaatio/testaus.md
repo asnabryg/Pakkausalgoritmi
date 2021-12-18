@@ -65,7 +65,8 @@ Pakkausteho nousi muutamalla prosentilla, mitä suurempi tiedoston koko oli. Nä
 Pienemmissä tiedostoissa Huffmanin pakkaus menetelmä vei voiton, mutta mitä suurempi tiedosto on, niin sitä paremmin LWZ menetlmä toimi. LZW algoritmi pääsi helposti yli 50% pakkaustehon, mitä Huffman algoritmi ei saavuttanut.  
 Huffman algoritmi onnistui 64 tavun kokoisen tiedoston myös pienentämään 5 tavulla, kun taas LZW algoritmillä tiedoston koko suureni parilla tavulla.  
 Pienempien tiedostojen pakkaaminen on usein turhaa, jos tiedostossa ei ole paljon toistoa.
+![chart](./kuvia/huffman_lzw_chart.png)  
   
-LZW pakkausaika oli melkein tuplasti korkeampi, kuin Huffmanin, mutta LZW pärjäsi huomattavasti paremmin purkuajoissa.
-  
-![chart](./kuvia/huffman_lzw_chart.png)
+LZW pakkausaika oli melkein tuplasti korkeampi kuin Huffmanin, mutta LZW pärjäsi huomattavasti paremmin purkuajoissa.
+
+![time_chart](./kuvia/aikavertailu.png)
